@@ -79,11 +79,14 @@ understanding and being able to explain the resulting solution.
 ## Curriculum Alignment
 
 I asked Claude to cross-check this project's HTML, CSS, and JavaScript
-against my course's own chapter notes (HTML, CSS, and JavaScript
-fundamentals) to make sure the code matches what a first assignment should
-look like, instead of relying on more advanced patterns an AI defaults to.
+against my course's own chapter notes to make sure the code matches what a
+first assignment should look like, instead of relying on more advanced
+patterns an AI defaults to. I checked against **five chapters**: HTML
+fundamentals, CSS fundamentals, JavaScript fundamentals, and — after I
+uploaded it — **Chapter 5: JavaScript in the Browser & React**, which my
+class has not covered yet but will next week.
 
-**What matches the course material:**
+**What matches Chapters 1–4 directly:**
 - HTML: document structure, semantic containers (`header`/`nav`/`main`/
   `section`/`footer`), paragraphs, headings, images with `alt`, unordered
   lists, and forms (`form`, `label for`, `input`, `textarea`, `button`).
@@ -94,27 +97,46 @@ look like, instead of relying on more advanced patterns an AI defaults to.
   operators, functions, and the `Date` object (`getHours()`,
   `getFullYear()`).
 
-**What goes beyond the course material I was given, and why it was kept
-anyway:**
-- The `<meta name="viewport">` tag and `@media` breakpoints aren't in the
-  CSS chapter I have, but the assignment explicitly requires the site to
-  "display well on desktop, tablet, and mobile" — that requirement is not
-  achievable without them, so I kept them rather than dropping a graded
-  requirement to match the chapter exactly.
-- All DOM/event-handling JavaScript (`document.getElementById`,
-  `addEventListener`, `classList.toggle`, `.textContent`, `.value`,
-  `form.reset()`, `event.preventDefault()`) is not in my JavaScript
-  fundamentals chapter, which covers the language itself (variables,
-  conditionals, functions, `Date`) but not yet how JavaScript reaches into
-  a webpage. Since the assignment requires at least one interactive JS
-  feature, and there is no way to make JavaScript touch the page without
-  the DOM, this is unavoidable — it likely belongs to a later chapter on
-  the DOM and events that I haven't covered yet.
-- I removed a couple of purely cosmetic extras that weren't in the CSS
-  notes and weren't required by the assignment (`border-radius`, and the
-  HTML `required` attribute on form fields, since my own JavaScript already
-  checks for empty fields manually).
+**What comes from Chapter 5 (JS in the Browser), which I haven't studied
+yet but will next week:**
+- `document.getElementById(...)` — this is DOM search method #1 in section
+  5.2 of that chapter, word for word.
+- `.textContent` — covered in 5.2 under "Modifying DOM node content".
+- Reading an input's `.value` — covered by 5.2's general rule that "every
+  attribute for an HTML element has an identically named property in the
+  element's DOM node" (the same rule that makes `.href`, `.src`, etc. work).
+- `event.preventDefault()` — appears repeatedly in that chapter's form
+  examples (section 5.12/5.13) as the first line of a submit handler.
+- The `<meta name="viewport">` tag — it appears in that chapter's own
+  example HTML (section 5.15) when it introduces loading Bootstrap.
 
-I'm flagging this openly rather than hiding it, since the assignment asks
-for transparency, not for the code to pretend it never used anything beyond
-the exact chapters provided.
+I'm using these ahead of schedule because the assignment requires at least
+one working JavaScript feature and a responsive layout, and I judged it
+better to look one chapter ahead for the DOM/browser basics than to fake
+interactivity without them.
+
+**What is still outside all five chapters I have, and why it was kept
+anyway:**
+- `addEventListener(...)` — not mentioned anywhere in Chapter 5. That
+  chapter teaches event handling only through React's JSX attributes
+  (`onClick`, `onSubmit`), never through the plain-JavaScript
+  `addEventListener` method, even though it covers the rest of the DOM
+  (`getElementById`, `textContent`, attribute properties) in detail.
+- `element.classList.toggle()` / `.contains()` — not mentioned in any of
+  the five chapters.
+- `form.reset()` — not mentioned in any of the five chapters.
+- A handful of small CSS properties: `@media` breakpoints, `align-items`,
+  `cursor`, `line-height`, `min-width`/`max-width`, `overflow`. None of
+  these appear in the CSS chapter, and Chapter 5 doesn't add any new CSS
+  properties (it only shows CSS being *used*, e.g. via `className`).
+
+These remaining items were kept because there is no way to attach an event
+listener, toggle a CSS class, or clear a submitted form in the browser
+without them, and the assignment explicitly requires a responsive layout
+and at least one interactive JavaScript feature. Removing them would mean
+turning in a non-functional site to match a syllabus technicality, which
+felt like the wrong trade-off — so I'm disclosing them here instead.
+
+I'm flagging all of this openly rather than hiding it, since the
+assignment asks for transparency, not for the code to pretend it never
+used anything beyond the exact chapters provided.
