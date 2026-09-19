@@ -75,3 +75,46 @@ This is disclosed here per the assignment's academic integrity policy: the
 code is AI-generated under my direction, not copied from another student or
 misrepresented as hand-written from scratch, and I take responsibility for
 understanding and being able to explain the resulting solution.
+
+## Curriculum Alignment
+
+I asked Claude to cross-check this project's HTML, CSS, and JavaScript
+against my course's own chapter notes (HTML, CSS, and JavaScript
+fundamentals) to make sure the code matches what a first assignment should
+look like, instead of relying on more advanced patterns an AI defaults to.
+
+**What matches the course material:**
+- HTML: document structure, semantic containers (`header`/`nav`/`main`/
+  `section`/`footer`), paragraphs, headings, images with `alt`, unordered
+  lists, and forms (`form`, `label for`, `input`, `textarea`, `button`).
+- CSS: external stylesheet via `<link>`, element/class/pseudo-class
+  selectors, hex colors, box model (padding/border/margin), and Flexbox
+  (`display: flex`, `flex-wrap`, `gap`, `justify-content`).
+- JavaScript: `let`/`const`, `if`/`else if`/`else`, comparison and logical
+  operators, functions, and the `Date` object (`getHours()`,
+  `getFullYear()`).
+
+**What goes beyond the course material I was given, and why it was kept
+anyway:**
+- The `<meta name="viewport">` tag and `@media` breakpoints aren't in the
+  CSS chapter I have, but the assignment explicitly requires the site to
+  "display well on desktop, tablet, and mobile" — that requirement is not
+  achievable without them, so I kept them rather than dropping a graded
+  requirement to match the chapter exactly.
+- All DOM/event-handling JavaScript (`document.getElementById`,
+  `addEventListener`, `classList.toggle`, `.textContent`, `.value`,
+  `form.reset()`, `event.preventDefault()`) is not in my JavaScript
+  fundamentals chapter, which covers the language itself (variables,
+  conditionals, functions, `Date`) but not yet how JavaScript reaches into
+  a webpage. Since the assignment requires at least one interactive JS
+  feature, and there is no way to make JavaScript touch the page without
+  the DOM, this is unavoidable — it likely belongs to a later chapter on
+  the DOM and events that I haven't covered yet.
+- I removed a couple of purely cosmetic extras that weren't in the CSS
+  notes and weren't required by the assignment (`border-radius`, and the
+  HTML `required` attribute on form fields, since my own JavaScript already
+  checks for empty fields manually).
+
+I'm flagging this openly rather than hiding it, since the assignment asks
+for transparency, not for the code to pretend it never used anything beyond
+the exact chapters provided.

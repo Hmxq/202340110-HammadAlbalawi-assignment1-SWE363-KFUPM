@@ -73,7 +73,6 @@ a {
 .nav-toggle {
   background-color: #ffffff;
   border: 1px solid #e2e6ee;
-  border-radius: 6px;
   padding: 8px 14px;
   cursor: pointer;
   font-family: inherit;
@@ -120,7 +119,6 @@ a {
 .btn {
   display: inline-block;
   padding: 12px 28px;
-  border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
   border: 2px solid transparent;
@@ -172,7 +170,6 @@ a {
 
 .about-image img {
   width: 200px;
-  border-radius: 50%;
   border: 4px solid #ffffff;
 }
 
@@ -203,7 +200,6 @@ a {
 .project-card {
   background-color: #ffffff;
   border: 1px solid #e2e6ee;
-  border-radius: 10px;
   overflow: hidden;
   flex: 1 1 300px;
   max-width: 340px;
@@ -241,7 +237,6 @@ a {
   background-color: #ffffff;
   border: 1px solid #e2e6ee;
   padding: 10px 22px;
-  border-radius: 999px;
   font-weight: 500;
 }
 
@@ -257,7 +252,6 @@ a {
   margin: 0 auto;
   background-color: #ffffff;
   padding: 30px;
-  border-radius: 10px;
   border: 1px solid #e2e6ee;
 }
 
@@ -276,7 +270,6 @@ a {
 .form-group textarea {
   width: 100%;
   padding: 10px 14px;
-  border-radius: 6px;
   border: 1px solid #e2e6ee;
   font-family: inherit;
   font-size: 1rem;
