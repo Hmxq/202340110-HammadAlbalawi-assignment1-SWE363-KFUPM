@@ -115,27 +115,42 @@ one working JavaScript feature and a responsive layout, and I judged it
 better to look one chapter ahead for the DOM/browser basics than to fake
 interactivity without them.
 
-**What is still outside all five chapters I have, and why it was kept
-anyway:**
+**A second pass: removing what could be removed.**
+After this review I asked Claude to go back and strip out anything that
+still wasn't in any of the five chapters, wherever a covered alternative
+existed:
+- `element.classList.toggle()` / `.contains()` → replaced with directly
+  reading and writing the `className` property (e.g.
+  `document.body.className = darkMode ? 'dark-mode' : ''`). `className` is
+  just the DOM property for the `class` attribute, which follows the same
+  "every attribute has an identically named property" rule from 5.2 that
+  already justified using `.value` — so this swap uses only material the
+  `.value` usage had already relied on.
+- `form.reset()` → replaced with manually clearing each field
+  (`nameField.value = ''`, etc.), using the same `.value` property.
+- Cosmetic CSS not in the chapter notes was dropped entirely: `cursor:
+  pointer`, `line-height`, and `overflow: hidden` (the last one was dead
+  weight anyway — it existed to clip rounded image corners, and the
+  `border-radius` it depended on had already been removed in an earlier
+  pass).
+
+**What is still outside all five chapters, and why it had to stay:**
 - `addEventListener(...)` — not mentioned anywhere in Chapter 5. That
   chapter teaches event handling only through React's JSX attributes
   (`onClick`, `onSubmit`), never through the plain-JavaScript
   `addEventListener` method, even though it covers the rest of the DOM
-  (`getElementById`, `textContent`, attribute properties) in detail.
-- `element.classList.toggle()` / `.contains()` — not mentioned in any of
-  the five chapters.
-- `form.reset()` — not mentioned in any of the five chapters.
-- A handful of small CSS properties: `@media` breakpoints, `align-items`,
-  `cursor`, `line-height`, `min-width`/`max-width`, `overflow`. None of
-  these appear in the CSS chapter, and Chapter 5 doesn't add any new CSS
-  properties (it only shows CSS being *used*, e.g. via `className`).
-
-These remaining items were kept because there is no way to attach an event
-listener, toggle a CSS class, or clear a submitted form in the browser
-without them, and the assignment explicitly requires a responsive layout
-and at least one interactive JavaScript feature. Removing them would mean
-turning in a non-functional site to match a syllabus technicality, which
-felt like the wrong trade-off — so I'm disclosing them here instead.
+  (`getElementById`, `textContent`, attribute properties, `className`) in
+  detail. There is no vanilla-JavaScript alternative taught anywhere in
+  the five chapters for reacting to a click or a form submit at all — so
+  without it, none of the site's required interactivity could exist.
+- `@media` breakpoints — not in the CSS chapter, but the assignment
+  explicitly requires the site to work on desktop, tablet, and mobile.
+- `align-items` and `min-width`/`max-width` — not in the CSS chapter.
+  These control vertical alignment in the flex rows and keep the page's
+  content from stretching into unreadably wide lines on large screens;
+  removing them doesn't break anything, but it does noticeably worsen the
+  layout, so I judged it not worth trading a real design problem for exact
+  chapter compliance.
 
 I'm flagging all of this openly rather than hiding it, since the
 assignment asks for transparency, not for the code to pretend it never

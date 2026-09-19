@@ -9,7 +9,6 @@ body {
   font-family: 'Poppins', Arial, sans-serif;
   background-color: #ffffff;
   color: #1e2430;
-  line-height: 1.6;
 }
 
 img {
@@ -74,7 +73,6 @@ a {
   background-color: #ffffff;
   border: 1px solid #e2e6ee;
   padding: 8px 14px;
-  cursor: pointer;
   font-family: inherit;
   font-size: 0.9rem;
 }
@@ -120,7 +118,6 @@ a {
   display: inline-block;
   padding: 12px 28px;
   font-weight: 600;
-  cursor: pointer;
   border: 2px solid transparent;
 }
 
@@ -200,7 +197,6 @@ a {
 .project-card {
   background-color: #ffffff;
   border: 1px solid #e2e6ee;
-  overflow: hidden;
   flex: 1 1 300px;
   max-width: 340px;
 }
