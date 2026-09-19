@@ -18,11 +18,12 @@
 **Benefits**
 - Sped up boilerplate work (repeating section markup, CSS resets) so more
   time could go into refining layout, spacing, and content.
-- Helped generate a working dark/light theme toggle pattern (CSS variables +
-  `data-theme` attribute + `localStorage`) that would have taken longer to
-  research from scratch.
-- Useful as a sanity check for responsive breakpoints and accessibility
-  attributes (e.g., `aria-expanded`, `aria-live` on the form status message).
+- Helped generate a simple dark/light theme toggle pattern (a `.dark-mode`
+  class toggled on `<body>` with `classList.toggle()`) that matched what I
+  had actually learned in class, instead of a more advanced approach.
+- Useful as a sanity check for responsive breakpoints and for keeping the
+  CSS/JS at a beginner level (plain selectors, `flex`, basic `if/else`)
+  rather than techniques not covered yet in the course.
 
 **Challenges**
 - AI-suggested code sometimes needed adjustment to match the specific folder
@@ -35,14 +36,14 @@
 
 ## Learning Outcomes
 
-- Reinforced how CSS custom properties (`:root` variables) can drive a full
-  theme system without duplicating styles.
-- Learned a clean pattern for persisting user preference (theme) with
-  `localStorage` and respecting `prefers-color-scheme` as a fallback.
+- Reinforced how `classList.toggle()` can switch a whole page's look by
+  adding/removing a single CSS class, without needing anything more advanced.
+- Practiced using plain `if / else if / else` logic in JavaScript to change
+  page content based on the current time.
 - Practiced structuring a static site into clear folders (`css/`, `js/`,
   `assets/`, `docs/`) for maintainability.
-- Better understanding of basic accessibility considerations (semantic tags,
-  `aria-label`, `aria-expanded`, `aria-live`) for a simple form-driven page.
+- Better understanding of how Flexbox (`display: flex`, `flex-wrap`, `gap`)
+  alone can build a responsive layout without more advanced CSS features.
 
 ## Responsible Use & Modifications
 

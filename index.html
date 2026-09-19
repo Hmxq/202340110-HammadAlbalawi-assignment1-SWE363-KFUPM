@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hammad Albalawi | Portfolio</title>
-  <meta name="description" content="Personal portfolio of Hammad Albalawi - Computer Science student.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -14,11 +12,9 @@
   <!-- Header / Navigation -->
   <header class="site-header">
     <nav class="navbar">
-      <a href="#home" class="logo">Hammad<span>.</span></a>
+      <a href="#home" class="logo">Hammad.</a>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle">Menu</button>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="nav-link">Home</a></li>
@@ -28,16 +24,16 @@
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme">🌙</button>
+      <button id="themeToggle" class="theme-toggle">Dark Mode</button>
     </nav>
   </header>
 
   <main>
     <!-- Hero / Home Section -->
     <section id="home" class="hero">
-      <div class="container hero-content">
+      <div class="container">
         <p id="greeting" class="greeting"></p>
-        <h1>Hi, I'm <span class="highlight">Hammad Albalawi</span></h1>
+        <h1>Hi, I'm Hammad Albalawi</h1>
         <p class="tagline">Computer Science Student &amp; Aspiring Software Developer</p>
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -75,9 +71,9 @@
     <section id="projects" class="section section-alt">
       <div class="container">
         <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
+        <div class="projects-list">
 
-          <article class="project-card">
+          <div class="project-card">
             <img src="assets/images/project-bank.svg" alt="Bank Management System placeholder image">
             <div class="project-info">
               <h3>Bank Management System</h3>
@@ -86,44 +82,34 @@
                 delete, and search client records, plus deposit/withdraw transactions with
                 file-based data persistence.
               </p>
-              <div class="project-tags">
-                <span>C++</span>
-                <span>File I/O</span>
-                <span>OOP</span>
-              </div>
+              <p class="project-tags">C++ | File I/O | OOP</p>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card">
+          <div class="project-card">
             <img src="assets/images/project-hospital.svg" alt="Hospital Management System placeholder image">
             <div class="project-info">
               <h3>Hospital Management System</h3>
               <p>
-                A Java application for managing hospital records — patients, doctors,
-                and appointments — built around custom data structures (linked lists /
-                stacks / queues) for storing and processing records efficiently.
+                A Java application for managing hospital records — patients, doctors, and
+                appointments — built around basic data structures such as linked lists,
+                stacks, and queues.
               </p>
-              <div class="project-tags">
-                <span>Java</span>
-                <span>Data Structures</span>
-                <span>OOP</span>
-              </div>
+              <p class="project-tags">Java | Data Structures | OOP</p>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card">
+          <div class="project-card">
             <img src="assets/images/project-placeholder.svg" alt="Upcoming project placeholder image">
             <div class="project-info">
               <h3>More Coming Soon</h3>
               <p>
-                This portfolio will grow with future assignments as I add new projects,
-                case studies, and deeper technical write-ups.
+                This portfolio will grow with future assignments as I add new projects
+                and write-ups.
               </p>
-              <div class="project-tags">
-                <span>In Progress</span>
-              </div>
+              <p class="project-tags">In Progress</p>
             </div>
-          </article>
+          </div>
 
         </div>
       </div>
@@ -150,7 +136,7 @@
         <h2 class="section-title">Contact</h2>
         <p class="contact-intro">Have a question or want to connect? Send me a message below.</p>
 
-        <form id="contactForm" class="contact-form" novalidate>
+        <form id="contactForm" class="contact-form">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -167,7 +153,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Send Message</button>
-          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          <p id="formStatus" class="form-status"></p>
         </form>
       </div>
     </section>

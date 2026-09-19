@@ -3,14 +3,15 @@
 ## Overview
 
 This is a static, single-page portfolio built with plain HTML, CSS, and
-JavaScript — no frameworks or build tools required.
+JavaScript — no frameworks, build tools, or external libraries beyond a
+Google Fonts stylesheet.
 
 ## File Structure
 
 | Path                          | Purpose                                            |
 | ------------------------------ | --------------------------------------------------- |
 | `index.html`                  | Page markup — Home/Hero, About, Projects, Skills, Contact sections. |
-| `css/styles.css`               | All styling: design tokens, layout, responsive rules, dark/light theme. |
+| `css/styles.css`               | All styling: layout, colors, responsive rules, dark/light theme. |
 | `js/script.js`                 | Interactivity: nav toggle, theme toggle, greeting, contact form handling. |
 | `assets/images/`               | Placeholder SVG images (profile + project thumbnails). |
 | `docs/ai-usage-report.md`      | AI tool usage documentation. |
@@ -18,58 +19,51 @@ JavaScript — no frameworks or build tools required.
 
 ## HTML Structure
 
-The page is a single `index.html` with five main landmarks:
+The page is a single `index.html` with five main sections, each identified
+by an `id` used for navigation:
 
-1. `#home` — hero section with greeting, name, tagline, and CTA buttons.
+1. `#home` — hero section with greeting, name, tagline, and buttons.
 2. `#about` — short bio and profile image.
-3. `#projects` — grid of project cards (image, title, description, tags).
+3. `#projects` — list of project cards (image, title, description, tags).
 4. `#skills` — list of core skills/technologies.
 5. `#contact` — a client-side-only contact form.
 
-Semantic elements (`header`, `nav`, `main`, `section`, `article`, `footer`)
-are used throughout for accessibility and SEO.
+Basic semantic elements (`header`, `nav`, `main`, `section`, `footer`) are
+used to keep the structure clear and readable.
 
 ## CSS Architecture
 
-- **Design tokens** are defined as CSS custom properties on `:root`
-  (colors, spacing radius, shadow, max width, transition speed).
-- **Theming**: a `[data-theme="dark"]` attribute on `<html>` overrides the
-  token values for dark mode. `js/script.js` toggles this attribute and
-  persists the choice in `localStorage`.
-- **Layout**: CSS Grid is used for the About section (image + text) and the
-  Projects grid (`repeat(auto-fit, minmax(280px, 1fr))` for a responsive,
-  card-based layout). Flexbox is used for the navbar, hero buttons, skills
-  list, and form groups.
-- **Responsiveness**: two breakpoints (`max-width: 768px` for tablet/mobile
-  nav collapse, `max-width: 480px` for tighter mobile spacing) adjust the
-  navigation into a collapsible menu and stack the About section.
+- **Colors**: plain hex color values, kept consistent across the page
+  (e.g. `#4f46e5` as the main accent color).
+- **Layout**: Flexbox (`display: flex`, `flex-wrap: wrap`, `gap`) is used
+  throughout — the navbar, the About section, the project cards, the
+  skills list, and the hero buttons — so the layout wraps naturally on
+  smaller screens.
+- **Dark mode**: a `.dark-mode` class is added to `<body>` by JavaScript;
+  CSS rules under `body.dark-mode` override the background and text colors
+  for the header, sections, cards, and form fields.
+- **Responsiveness**: two `@media` breakpoints (`max-width: 768px` for the
+  mobile navigation menu, `max-width: 480px` for tighter spacing on small
+  phones).
 
 ## JavaScript Behavior
 
-`js/script.js` is organized into independent, self-contained features:
+`js/script.js` contains a few independent, beginner-level features:
 
-1. **Mobile navigation toggle** — toggles an `.open` class on the nav list
-   and updates `aria-expanded` on the hamburger button; closes the menu
-   automatically when a link is clicked.
-2. **Theme toggle** — reads/writes `localStorage['portfolio-theme']`,
-   falls back to the OS-level `prefers-color-scheme` media query on first
-   visit, and updates the toggle button icon (🌙 / ☀️).
-3. **Time-of-day greeting** — uses `Date().getHours()` to render "Good
-   morning / afternoon / evening" text above the hero heading.
-4. **Contact form handling** — intercepts `submit`, runs native HTML5
-   validation (`checkValidity()`), and shows a success/error message in a
-   `role="status"` element. No data is sent anywhere (no backend, as per
-   assignment scope).
-5. **Footer year** — sets the copyright year dynamically.
-
-## Accessibility Notes
-
-- All interactive controls have `aria-label` or visible text labels.
-- The mobile nav toggle exposes `aria-expanded` state.
-- The contact form status message uses `aria-live="polite"` so screen
-  readers announce submission feedback.
-- Color contrast for both themes was chosen to stay readable (dark text on
-  light background and vice versa).
+1. **Mobile navigation toggle** — a `click` listener on the menu button
+   toggles an `.open` class on the nav list with `classList.toggle()`.
+2. **Dark/light theme toggle** — a `click` listener toggles a `.dark-mode`
+   class on `<body>` and updates the button's text ("Dark Mode" /
+   "Light Mode"). The choice is only kept for the current page view (no
+   storage is used).
+3. **Time-of-day greeting** — uses `new Date().getHours()` with a simple
+   `if / else if / else` to show "Good morning!", "Good afternoon!", or
+   "Good evening!" above the hero heading.
+4. **Contact form handling** — listens for the form's `submit` event, calls
+   `event.preventDefault()`, checks the three fields aren't empty with a
+   plain `if` statement, and shows a message in a `<p>` element. No data is
+   sent anywhere (no backend, as per assignment scope).
+5. **Footer year** — sets the copyright year using `new Date().getFullYear()`.
 
 ## Browser/Device Testing
 
@@ -78,12 +72,10 @@ Manually verified via browser DevTools responsive mode at:
 - Tablet (~768px)
 - Mobile (~375px)
 
-No external dependencies beyond a Google Fonts stylesheet (Poppins), so the
-site loads quickly and works offline once cached.
-
 ## Known Limitations
 
 - The contact form does not send data anywhere (by design — the assignment
   does not require a backend).
+- The dark mode choice resets on page reload since no storage is used.
 - Images are lightweight placeholder SVGs; they should be replaced with
   real project screenshots and a real profile photo in future iterations.

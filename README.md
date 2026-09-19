@@ -12,14 +12,14 @@ Deployed with GitHub Pages: `https://hmxq.github.io/202340110-HammadAlbalawi-ass
 ## Features
 
 - **About Me** section with a short intro and tagline.
-- **Projects** section featuring the Bank Management System (C++) and this
-  portfolio site itself.
+- **Projects** section featuring the Bank Management System (C++) and a
+  Hospital Management System (Java).
 - **Skills** section listing core technologies.
 - **Contact** form (Name, Email, Message) — front-end only, no backend.
-- **Dark / light theme toggle** that remembers your preference (`localStorage`).
+- **Dark / light theme toggle** using a simple CSS class switch.
 - **Time-based greeting** ("Good morning/afternoon/evening") generated with JavaScript.
-- **Responsive design** using CSS Flexbox/Grid — tested on desktop, tablet, and mobile widths.
-- **Mobile navigation menu** with a hamburger toggle.
+- **Responsive design** using CSS Flexbox — tested on desktop, tablet, and mobile widths.
+- **Mobile navigation menu** with a toggle button.
 
 ## Project Structure
 

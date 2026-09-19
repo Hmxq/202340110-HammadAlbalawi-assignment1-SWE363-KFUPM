@@ -2,38 +2,21 @@
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', isOpen);
-});
-
-// Close the mobile menu after a nav link is clicked
-navLinks.querySelectorAll('.nav-link').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
+navToggle.addEventListener('click', function () {
+  navLinks.classList.toggle('open');
 });
 
 // ===== Dark / Light Theme Toggle =====
 const themeToggle = document.getElementById('themeToggle');
-const root = document.documentElement;
-const THEME_KEY = 'portfolio-theme';
 
-function applyTheme(theme) {
-  root.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-}
+themeToggle.addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
 
-// Restore saved theme, falling back to the user's system preference
-const savedTheme = localStorage.getItem(THEME_KEY);
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-applyTheme(savedTheme || (systemPrefersDark ? 'dark' : 'light'));
-
-themeToggle.addEventListener('click', () => {
-  const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(nextTheme);
-  localStorage.setItem(THEME_KEY, nextTheme);
+  if (document.body.classList.contains('dark-mode')) {
+    themeToggle.textContent = 'Light Mode';
+  } else {
+    themeToggle.textContent = 'Dark Mode';
+  }
 });
 
 // ===== Greeting Message Based on Time of Day =====
@@ -42,11 +25,11 @@ const hour = new Date().getHours();
 let greetingText = 'Welcome';
 
 if (hour < 12) {
-  greetingText = 'Good morning! 👋';
+  greetingText = 'Good morning!';
 } else if (hour < 18) {
-  greetingText = 'Good afternoon! 👋';
+  greetingText = 'Good afternoon!';
 } else {
-  greetingText = 'Good evening! 👋';
+  greetingText = 'Good evening!';
 }
 
 greetingEl.textContent = greetingText;
@@ -55,19 +38,19 @@ greetingEl.textContent = greetingText;
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-contactForm.addEventListener('submit', (event) => {
+contactForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  if (!contactForm.checkValidity()) {
-    formStatus.textContent = 'Please fill in all fields correctly.';
-    formStatus.style.color = '#e11d48';
-    return;
-  }
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
 
-  const name = document.getElementById('name').value.trim();
-  formStatus.style.color = 'var(--color-primary)';
-  formStatus.textContent = `Thanks, ${name}! Your message has been noted (demo only, no backend connected).`;
-  contactForm.reset();
+  if (name === '' || email === '' || message === '') {
+    formStatus.textContent = 'Please fill in all fields.';
+  } else {
+    formStatus.textContent = 'Thanks, ' + name + '! Your message has been noted (demo only, no backend connected).';
+    contactForm.reset();
+  }
 });
 
 // ===== Footer Year =====
