@@ -320,6 +320,10 @@ body.dark-mode .site-footer {
   color: #a3abbd;
 }
 
+body.dark-mode .about-image img {
+  border-color: #2a3040;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .nav-toggle {
